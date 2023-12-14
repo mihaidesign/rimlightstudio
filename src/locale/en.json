@@ -1,0 +1,11 @@
+{
+  "translation": {
+    "description": {
+      "weAre": "We are {{appName}}"
+    },
+    "construction": {
+      "title": "Under construction...",
+      "description": "We are cooking up an awesome website for you!"
+    }
+  }
+}

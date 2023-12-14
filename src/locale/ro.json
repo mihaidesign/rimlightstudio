@@ -1,0 +1,11 @@
+{
+  "translation": {
+    "description": {
+      "weAre": "Noi suntem {{appName}}"
+    },
+    "construction": {
+      "title": "In lucru...",
+      "description": "Iti pregatim un website exceptional!"
+    }
+  }
+}
