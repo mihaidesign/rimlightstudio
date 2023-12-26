@@ -1,7 +1,13 @@
 {
   "translation": {
+    "menu": {
+      "home": "Acasa",
+      "about": "Despre Noi",
+      "contact": "Contact",
+      "portfolio": "Portfoliu"
+    },
     "description": {
-      "weAre": "Noi suntem {{appName}}"
+      "we-are": "Noi suntem {{appName}}"
     },
     "construction": {
       "title": "In lucru...",

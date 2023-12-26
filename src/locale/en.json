@@ -1,7 +1,13 @@
 {
   "translation": {
+    "menu": {
+      "home": "Home",
+      "about": "About Us",
+      "contact": "Contact",
+      "portfolio": "Portfolio"
+    },
     "description": {
-      "weAre": "We are {{appName}}"
+      "we-are": "We are {{appName}}"
     },
     "construction": {
       "title": "Under construction...",
