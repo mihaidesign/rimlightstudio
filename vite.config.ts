@@ -13,17 +13,7 @@ export default defineConfig({
       { find: 'images', replacement: path.resolve(__dirname, 'src/assets/images') },
       { find: 'util', replacement: path.resolve(__dirname, 'src/util') },
       { find: 'pages', replacement: path.resolve(__dirname, 'src/pages') },
+      { find: 'public', replacement: path.resolve(__dirname, 'public') },
     ],
   },
-  // resolve: {
-  //   alias: {
-  //     src: "/src/*",
-  //     components: "/src/components/*",
-  //     assets: "/src/assets/*",
-  //     images: "/src/assets/images/*",
-  //     pages: "/src/pages/*",
-  //     util: "/src/util/*",
-  //     locale: "/src/locale/*",
-  //   },
-  // },
 });

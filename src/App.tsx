@@ -1,35 +1,25 @@
 import UnderConstruction from "pages/under-construction";
-import Header from "./components/nav/Header";
+import Layout from "./components/nav/layout";
 import { Home } from "./pages/home";
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// import UnderConstruction from "./pages/under-construction";
+gsap.registerPlugin(ScrollTrigger);
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Header />}>
+    <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="*" element={<UnderConstruction />} />
-      {/* <Route path="login" element={<Login />} /> */}
-      {/* <Route path="register" element={<Register />} /> */}
     </Route>
   )
 );
 const App = () => {
-  // useEffect(() => {
-  //   if (localStorage.theme === 'dark' || (!('theme' in localStorage))) {
-  //     document.documentElement.classList.add('dark');
-  //   } else {
-  //     document.documentElement.classList.remove('dark');
-  //   }
-
-  // }, []);
   return (
-    <div className="flex flex-col w-screen dark:bg-dark bg-grey-light items-center">
+    <main className="flex flex-col w-screen dark:bg-dark bg-grey-light items-center">
       <RouterProvider router={router} />
-      {/* <Home /> */}
-      {/* <UnderConstruction /> */}
-    </div>
+    </main>
   );
 };
 

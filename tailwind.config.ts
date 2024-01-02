@@ -5,6 +5,10 @@ export default {
   content: ['./src/**/*.{vue,js,ts,jsx,tsx}', './index.html'],
   darkMode: 'class',
   theme: {
+    screens: {
+      'xs': '475px',
+      ...defaultTheme.screens,
+    },
     fontFamily: {
       // display: ['Oswald', ...defaultTheme.fontFamily.sans],
       display: ['Caviar Dreams', ...defaultTheme.fontFamily.sans],
@@ -12,13 +16,24 @@ export default {
       sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
     },
     extend: {
+
       height: {
         'section-header': 'calc(100vh - 65px)',
         'nav': '64px',
+        'footer': '70vh',
+        'logo': '88px'
       },
       letterSpacing: {
         'heading': '0.36rem',
         'nav': '0.28rem'
+      },
+      fontSize: {
+        'h1': '48px',
+        'h2': '36px',
+        'h3': '30px',
+        'h4': '24px',
+        'h5': '20px',
+        'h6': '16px',
       },
       borderWidth: {
         hair: "0.25px"
@@ -49,7 +64,24 @@ export default {
         "neumorphic-inverse": `
         inset 2px 2px 3px #d4af3733,
         inset -2px -2px 3px  #d4af3733;
-        `
+        `,
+        tooltip: ' 0 8px 20px rgba(0, 0, 0, 0.1)'
+      },
+      animation: {
+        'slide-enter': 'slide 200ms',
+        'slide-exit': "slide 200ms reverse ease-in",
+      },
+      keyframes: {
+        slide: {
+          '0%': {
+            transform: 'var(--origin)',
+            opacity: '0'
+          },
+          '100%': {
+            transform: 'translateY(0%)',
+            opacity: '1'
+          }
+        }
       }
       // inset -10px -10px 15px  rgba(255, 255, 255, 0.4);
     },

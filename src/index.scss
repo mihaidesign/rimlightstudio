@@ -77,3 +77,90 @@ h6 {
   font-weight: 700;
   font-style: normal;
 }
+
+/**
+* React Aria tooltip
+*/
+
+.react-aria-Tooltip {
+  @apply shadow-tooltip rounded 
+  bg-grey-light dark:bg-dark text-golden dark:text-golden-text
+  outline-none focus-visible:outline-none 
+  py-1 px-2 font-sans text-sm
+  max-w-[150px]
+  border border-golden/25;
+  // box-shadow: 0 8px 20px rgba(0 0 0 / 0.1);
+  // border-radius: 4px;
+  // background: var(--highlight-background);
+  // color: var(--highlight-foreground);
+  // forced-color-adjust: none;
+  // outline: none;
+  // padding: 2px 8px;
+  // max-width: 150px;
+  /* fixes FF gap */
+  transform: translate3d(0, 0, 0);
+
+  &[data-entering] {
+    @apply animate-slide-enter;
+  }
+  &[data-exiting] {
+    @apply animate-slide-exit;
+  }
+
+  &[data-placement="top"] {
+    @apply mb-2 [--origin:translateY(4px)];
+  }
+
+  &[data-placement="bottom"] {
+    @apply mt-2 [--origin:translateY(-4px)];
+    & .react-aria-OverlayArrow svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  &[data-placement="right"] {
+    @apply ml-2 [--origin:translateX(-4px)];
+    & .react-aria-OverlayArrow svg {
+      transform: rotate(90deg);
+    }
+  }
+
+  &[data-placement="left"] {
+    @apply mr-2 [--origin:translateX(4px)];
+    & .react-aria-OverlayArrow svg {
+      transform: rotate(-90deg);
+    }
+  }
+
+  & .react-aria-OverlayArrow svg {
+    @apply block fill-golden;
+  }
+
+  // &[data-entering] {
+  //   animation: slide 200ms;
+  // }
+
+  // &[data-exiting] {
+  //   animation: slide 200ms reverse ease-in;
+  // }
+}
+// .react-aria-Tooltip {
+//   &[data-entering] {
+//     @apply animate-slide-enter;
+//   }
+//   &[data-exiting] {
+//     @apply animate-slide-exit;
+//   }
+// }
+
+// @keyframes slide {
+//   from {
+//     transform: var(--origin);
+//     opacity: 0;
+//   }
+
+//   to {
+//     transform: translateY(0);
+//     opacity: 1;
+//   }
+// }

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
-import LogoDark from 'images/Logo_dark.png';
-import LogoLight from 'images/Logo_light.png';
+import { NavLink, Outlet } from "react-router-dom";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBook, faContactBook, faHouse, faLightbulb, faX } from '@fortawesome/free-solid-svg-icons';
 import { faLightbulb as faLightbulbOutline } from '@fortawesome/free-regular-svg-icons';
@@ -9,6 +8,8 @@ import { Translation } from "util/translationKeys";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "components/LanguageSwitcher";
 import { IconButton } from "components/shared/icon-button";
+import Footer from "./footer";
+import Logo from "components/shared/logo/logo";
 
 
 const routes = [
@@ -29,7 +30,7 @@ const routes = [
   },
 ];
 
-const Header = () => {
+const Layout = () => {
 
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isLightTheme, setIsLightTheme] = useState(false);
@@ -71,9 +72,9 @@ const Header = () => {
 
   return (
     <>
-      <nav className="border-gold bg-grey-light dark:bg-dark dark:border-golden border-b w-full flex flex-col items-center">
+      <nav className="border-gold bg-grey-light dark:bg-dark dark:border-golden border-b w-full flex flex-col items-center mb-5">
         <div className="flex items-center justify-between py-3 px-2 md:px-0 md:py-6 container relative flex-wrap">
-          <div className="flex xs:max-w-2/5 grow">
+          <div className="flex w-4/12 sm:w-5/12">
             <ul className="hidden md:flex space-x-4">
               {routes.map((route, index) => (
                 <li key={index} className="group">
@@ -100,19 +101,11 @@ const Header = () => {
               ))}
             </ul>
           </div>
-          <div className="flex relative w-1/5 xs:w-[96px] justify-center">
-            <div className={`absolute border flex items-center justify-center dark:border-golden border-gold top-0 left-1/2
-            -translate-y-1/3 -translate-x-1/2 rounded-full bg-gradient-to-b dark:from-emerald-green from-grey-light dark:to-grey-dark to-ivory-light
-            w-20 md:w-24 h-20 md:h-24 dark:shadow-neumorphic shadow-neumorphic-inverse`
-            }>
-              <Link to="/" className="flex items-center focus:outline-transparent focus-visible:outline-none">
-                <img src={LogoLight} className="h-8 dark:flex hidden" alt="Rim Light Studio Logo Light" />
-                <img src={LogoDark} className="h-8 dark:hidden" alt="Rim Light Studio Logo Dark" />
-              </Link>
-            </div>
+          <div className="flex relative lg:w-[96px] w-3/12 sm:w-2/12 justify-center">
+            <Logo />
           </div>
 
-          <div className="flex w-2/5 justify-end space-x-2">
+          <div className="flex w-4/12 sm:w-5/12 justify-end space-x-2">
 
 
             <IconButton onClick={toggleTheme}>
@@ -134,15 +127,6 @@ const Header = () => {
               }
 
             </IconButton>
-            {/* <button
-              onClick={toggleNav}
-              className="
-                inline-flex items-center justify-center 
-                md:hidden p-2 w-10 h-10 text-sm text-emerald-green dark:text-golden-text 
-                rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-green dark:focus:ring-golden"
-              aria-expanded={isNavOpen}>
-            </button> */}
-
 
           </div>
           <div className={`${isNavOpen ? 'md:max-h-0 max-h-screen' : ''} flex flex-col w-full max-h-0 overflow-hidden transition-all duration-200 ease-in-out `}>
@@ -166,27 +150,18 @@ const Header = () => {
 
 
                   </NavLink>
-                  {/* <NavLink
-                    to={route.path}
-                    className={({ isActive }) =>
-                      `${isActive
-                        ? 'text-white dark:text-white dark:bg-emerald-green bg-emerald-green'
-                        : 'dark:text-white text-dark'} 
-                      font-bold  
-                      ease-in duration-200 transition-all font-display uppercase text-sm relative w-full flex px-4 py-3
-                      `}
-                  >
-                    {t(route.title)}
-                  </NavLink> */}
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </nav >
-      <Outlet />
+      <div className="main-container flex w-full items-center justify-center">
+        <Outlet />
+      </div>
+      <Footer />
     </>
   );
 };
 
-export default Header;
+export default Layout;
