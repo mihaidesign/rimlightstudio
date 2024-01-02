@@ -10,6 +10,9 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from "components/shared/tooltip";
 import IconLink from "components/shared/icon-link/icon-link";
 import { Placement } from "react-aria";
+import { navigationRoutes } from "./layout";
+import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 const FACEBOOK_URL = 'https://facebook.com/';
@@ -42,7 +45,7 @@ const links = [
 ];
 
 const Footer = () => {
-
+  const { t } = useTranslation();
 
 
   useEffect(() => {
@@ -67,9 +70,9 @@ const Footer = () => {
     <>
       <footer className="pt-32 border-t border-t-golden-text overflow-hidden w-screen h-footer 
       bg-gradient-to-b dark:from-emerald-green from-grey-light dark:to-grey-dark to-ivory-light to-35%
-      flex justify-center">
+      flex flex-col justify-center">
         <section className="footer-container w-full h-footer items-center flex flex-col dark:bg-dark bg-grey-light border-t border-golden-text">
-          <div className="container flex items-center justify-between flex-wrap w-full">
+          <div className="container flex items-center justify-between flex-wrap w-full h-full">
 
             <div className="flex w-full justify-center">
               <div className="flex relative lg:w-[96px] w-3/12 sm:w-2/12 justify-center pt-16">
@@ -93,6 +96,33 @@ const Footer = () => {
                     ))
                   }
                 </div>
+                <div className="flex grow items-end">
+                  <ul className="hidden md:flex space-x-4">
+                    {navigationRoutes.map((route, index) => (
+                      <li key={index} className="group">
+                        <NavLink
+                          to={route.path}
+                          className={({ isActive }) =>
+                            `${isActive
+                              ? 'text-golden-text dark:text-golden-text before:scale-50'
+                              : 'before:scale-0 dark:text-white text-golden-text'} 
+                      font-display-bold
+                      before:h-1 before:absolute before:-top-3 before:-left-0.5 before:flex before:w-full dark:before:bg-golden-text before:bg-golden-text
+                      before:transition-transform before:duration-300 before:ease-in-out
+                      group-hover:before:scale-x-75 group-hover:before:bg-gold/70 dark:group-hover:before:bg-golden-text
+                      font-bold text-xs lg:tracking-heading tracking-nav hover:text-gold/70 dark:hover:text-golden-text 
+                      ease-in duration-200 transition-all uppercase relative w-full
+                    `}
+                        >
+                          <span>
+                            {t(route.title)}
+                          </span>
+
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
               <div className="flex flex-col space-y-4 w-1/3">
                 <div className="flex flex-col">
@@ -115,6 +145,13 @@ const Footer = () => {
           </div>
         </section>
       </footer>
+      <section className="flex w-full">
+        <div className="flex w-full pt-5 pb-1 justify-center">
+          <Text variant='body' className="flex">
+            © Copyright RIM Light Studio {new Date().getFullYear()} All rights reserved.
+          </Text>
+        </div>
+      </section>
     </>
   );
 };

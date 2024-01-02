@@ -12,7 +12,7 @@ import Footer from "./footer";
 import Logo from "components/shared/logo/logo";
 
 
-const routes = [
+export const navigationRoutes = [
   {
     title: Translation.Menu.home,
     path: "/",
@@ -76,7 +76,7 @@ const Layout = () => {
         <div className="flex items-center justify-between py-3 px-2 md:px-0 md:py-6 container relative flex-wrap">
           <div className="flex w-4/12 sm:w-5/12">
             <ul className="hidden md:flex space-x-4">
-              {routes.map((route, index) => (
+              {navigationRoutes.map((route, index) => (
                 <li key={index} className="group">
                   <NavLink
                     to={route.path}
@@ -132,7 +132,7 @@ const Layout = () => {
           <div className={`${isNavOpen ? 'md:max-h-0 max-h-screen' : ''} flex flex-col w-full max-h-0 overflow-hidden transition-all duration-200 ease-in-out `}>
             <LanguageSwitcher />
             <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-nav-bg dark:border-gray-700">
-              {routes.map((route, index) => (
+              {navigationRoutes.map((route, index) => (
                 <li key={index} >
                   <NavLink
                     to={route.path}
